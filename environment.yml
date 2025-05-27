@@ -1,0 +1,23 @@
+name: VoiceYourWay
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - nodejs=18
+  - pip
+  - requests
+  - python-dotenv
+  - numpy
+  - scipy
+  - ffmpeg
+  - git
+  - pip:
+    - elevenlabs>=1.56.0
+    - anthropic
+    - sounddevice
+    - openai-whisper
+    - keyboard
+    - python-multipart
+    - aiohttp
+    - asyncio
