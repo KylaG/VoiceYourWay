@@ -15,7 +15,10 @@
     "expo-location": "~18.1.5",
     "expo-speech": "~13.1.7",
     "react": "19.0.0",
-    "react-native": "0.79.2"
+    "react-native": "0.79.2",
+    "react-native-dotenv": "^3.4.11",
+    "expo-constants": "~17.1.6",
+    "undefined": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
