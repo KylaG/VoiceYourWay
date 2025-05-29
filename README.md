@@ -9,7 +9,7 @@ cd backend
 node app.js
 ```
 
-The "/query" endpoint expects a JSON object which looks like:
+The "/prompt" endpoint expects a JSON object which looks like:
 ```
 {
     "prompt": "Hi, Claude!"
