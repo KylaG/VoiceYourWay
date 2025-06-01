@@ -10,12 +10,13 @@ import queue
 import threading
 import sys
 import numpy as np
+from dotenv import load_dotenv
 
-# set up Eleven Labs API Key
-ELEVEN_LABS_KEY = ""
-GOOGLE_MAPS_KEY = ""
-
+load_dotenv()
+ELEVEN_LABS_KEY = os.getenv("ELEVEN_LABS_API_KEY")
+print("Eleven Key:", ELEVEN_LABS_KEY)
 client = ElevenLabs(api_key=ELEVEN_LABS_KEY)
+url = "http://localhost:3000/prompt"
 
 def main():
     #record_and_transcribe(5)
@@ -39,8 +40,9 @@ def record_and_transcribe(duration=5):
     RATE = 44100
     CHANNELS = 1
 
+    print("Eleven Labs Key:", ELEVEN_LABS_KEY)
     # Record audio
-    print(f"Recording...")
+    print(f"Recording!...")
     audio = sd.rec(int(duration * RATE), samplerate=RATE, channels=CHANNELS, dtype='int16')
     sd.wait()  # Wait for recording to finish
     print("Recording complete!")
@@ -113,7 +115,7 @@ def record_until_keypress():
         enter_thread.start()
         
         # Start recording in a separate thread
-        print("Recording... (Press Enter to stop)")
+        print("Recording!... (Press Enter to stop)")
         
         # Start the audio stream
         with stream:
@@ -158,6 +160,12 @@ def record_until_keypress():
         
         print("\nTranscription:")
         print(transcription.text)
+        data = {
+        "prompt": f"Here is the Google Maps request from the user that you must fulfill: {transcription.text}"
+        }
+        response = requests.post(url, json=data)
+        print("Response from Claude: ", response.text)
+
         
         return transcription
     
