@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 app.post('/prompt', async (req, res) => {
   try {
     const { prompt } = req.body
+    console.log("PROMPT TO CLAUDE", prompt)
     
     // Validate that prompt exists
     if (!prompt || typeof prompt !== 'string') {
@@ -23,7 +24,10 @@ app.post('/prompt', async (req, res) => {
       })
     }
     
-    const response = await sendToClaude(prompt)
+    const response = await sendToClaude(prompt);
+    // console.log("Response from Claude:", response);
+    // console.log("Content:", response["content"].at(-1)["input"]["address"]);
+    // console.log(response.content[content.length() - 1].input)
     
     // Return the response
     res.json({
