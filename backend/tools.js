@@ -47,6 +47,34 @@ export const DIRECTIONS_TOOL = {
   },
 };
 
+export const NAVIGATION_URL_TOOL = {
+  name: "navigation_url_tool",
+  description: `This tool provides a Google Maps link for navigation from the
+  indicated origin to indicated destination. When the user asks for
+  directions, this tool should be used as the final step as a way to provide the
+  user with a direct link to their desired route. The first parameter is the origin
+  of the route. It should be a string which you'd enter into a navigation system to
+  indicate the starting point of the route. The second parameter is the destination.
+  It should be a string which you'd enter into a navigation system to indicate the end
+  of a route.`,
+  input_schema: {
+    type: "object",
+    properties: {
+      origin: {
+        type: "string",
+        description: `The place where the route begins. The format should be
+        something that would be recognized by a navigation system like Google Maps.`
+      },
+      destination: {
+        type: "string",
+        description: `The place where the route ends. The format should be
+        something that would be recognized by a navigation system like Google Maps.`
+      }
+    },
+    required: ["origin", "destination"]
+  }
+}
+
 /*
 
 {

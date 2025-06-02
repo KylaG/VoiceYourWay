@@ -5,7 +5,7 @@
 import { Anthropic } from '@anthropic-ai/sdk';
 import { Client, Language } from "@googlemaps/google-maps-services-js";
 import 'dotenv/config';
-import { DIRECTIONS_TOOL, GEOCODE_TOOL } from './tools.js';
+import { DIRECTIONS_TOOL, GEOCODE_TOOL, NAVIGATION_URL_TOOL } from './tools.js';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
@@ -31,7 +31,7 @@ async function sendToClaude(prompt) {
     response = await anthropic.messages.create({
     model: "claude-3-7-sonnet-20250219",
       max_tokens: 1024,
-      tools: [GEOCODE_TOOL, DIRECTIONS_TOOL],
+      tools: [GEOCODE_TOOL, DIRECTIONS_TOOL, NAVIGATION_URL_TOOL],
       messages: messages
     });
     if (response.stop_reason === "tool_use") {
@@ -84,8 +84,10 @@ async function executeTool(response) {
   if (tool === "maps_geocode") {
     // const result = await maps_geocode(response["content"].at(-1)["input"]["address"]);
     result = await maps_geocode(toolInput["address"]);
-  } else if (tool == "maps_directions"){
+  } else if (tool === "maps_directions") {
     result = await maps_directions(toolInput["origin"], toolInput["destination"], toolInput["mode"]);
+  } else if (tool === "navigation_url_tool") {
+    result = maps_url(toolInput["origin"], toolInput["destination"]);
   }
 
   toolResults.push({
@@ -125,6 +127,21 @@ async function maps_directions(origin, destination, mode = 'driving') {
       console.error("Error in directions:", error);
       throw new Error("An error occurred while getting directions");
     }
+}
+
+function maps_url(origin, destination) {
+  const baseUrl = "https://www.google.com/maps/dir/";
+  const url = new URL(baseUrl);
+  url.searchParams.append("api", "1");
+  url.searchParams.append("origin", origin);
+  url.searchParams.append("destination", destination);
+  // We can also add optional place IDs, but the destination is still required.
+  // Not sure how this works yet
+  // if (destination_place_id) {
+  //   url.searchParams.append("destination_place_id", destination_place_id);
+  // }
+  // We can also add "waypoints" here to add a stop!
+  return url.toString();
 }
 
 export { sendToClaude }
