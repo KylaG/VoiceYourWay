@@ -2,9 +2,15 @@
  * This module exports functions which interact with Claude
  */
 
-import { Anthropic } from '@anthropic-ai/sdk';
+/**
+ * @typedef {Object} Place
+ * @property {string} name
+ * @property {string} address
+ */
+
+import { Anthropic } from "@anthropic-ai/sdk";
 import { Client, Language } from "@googlemaps/google-maps-services-js";
-import 'dotenv/config';
+import "dotenv/config";
 import {
   searchPlacesTool,
   searchAlongRouteTool,
@@ -27,12 +33,12 @@ const placesClient = new PlacesClient({
 });
 
 /**
- * Send query to Claude.
+ * Send query to Claude and provide Claude tools to respond to the query.
+ * This should return a URL which is a link to a Google Maps route.
  * @param {string} prompt : Prompt for Claude
- * @param {boolean} useMCP : Whether to use MCP (optional, defaults to true)
  */
 async function sendToClaude(prompt) {
-  console.log("Send to Claude starting");
+  console.log("Send to Claude starting.");
   const messages = [{ role: "user", content: prompt }];
 
   let response;
@@ -47,8 +53,6 @@ async function sendToClaude(prompt) {
         formatTool,
       ],
       system: SYSTEM_PROMPT,
-      // system:
-      //   "You are a navigation assistant. If you want to use the search_along_route tool, you MUST use the get_polyline tool to get the polyline which you'll use in the route parameter of the search_along_route tool.",
       messages: messages,
     });
     if (response.stop_reason === "tool_use") {
@@ -78,29 +82,14 @@ async function sendToClaude(prompt) {
     }
   } while (response.stop_reason === "tool_use");
 
-  // return response;
-  console.log("Claude final response:", response);
   const output_object = response["content"][1]["input"];
-  const url = maps_url(
+  const url = getMapsUrl(
     output_object["origin"],
     output_object["destination"],
     output_object["stops"]
   );
+  console.log(`getMapsUrl(${output_object}) returned ${url}`);
   return url;
-
-  // const response = await anthropic.messages.create({
-  //   model: "claude-3-7-sonnet-20250219",
-  //     max_tokens: 1024,
-  //     tools: [GEOCODE_TOOL, DIRECTIONS_TOOL],
-  //     messages: [
-  //       {"role": "user", "content": prompt}
-  //     ]
-  // });
-  // if (response.stop_reason == "tool_use") {
-  //   const result = executeTool(response);
-  // }
-  // // console.log(result);
-  // return response;
 }
 
 async function executeTool(response) {
@@ -109,7 +98,6 @@ async function executeTool(response) {
   const toolInput = response["content"].at(-1)["input"];
 
   let result;
-  // console.log("printing in executeTool:", response["content"]["input"]);
   const tool = response["content"].at(-1)["name"];
   if (tool === "search_places") {
     result = await searchPlaces(toolInput["search_query"]);
@@ -121,28 +109,6 @@ async function executeTool(response) {
       toolInput["route"]
     );
   }
-  // if (tool === "maps_geocode") {
-  //   // const result = await maps_geocode(response["content"].at(-1)["input"]["address"]);
-  //   result = await maps_geocode(toolInput["address"]);
-  // } else if (tool === "maps_get_polyline") {
-  //   result = await maps_directions(
-  //     toolInput["origin"],
-  //     toolInput["destination"],
-  //     toolInput["mode"]
-  //   );
-  // } else if (tool === "navigation_url_tool") {
-  //   result = maps_url(
-  //     toolInput["origin"],
-  //     toolInput["destination"],
-  //     toolInput["waypoints"]
-  //   );
-  // } else if (tool === "search_along_route") {
-  //   console.log(
-  //     "Claude is using searchAlongRoute! The route provided is",
-  //     toolInput["route"]
-  //   );
-  //   result = searchAlongRoute(toolInput["query"], toolInput["route"]);
-  // }
 
   toolResults.push({
     tool_use_id: toolUseId,
@@ -151,26 +117,12 @@ async function executeTool(response) {
   return toolResults;
 }
 
-// async function maps_geocode(address) {
-//   let result;
-//   try {
-//     result = await maps.geocode({
-//       params: {
-//         address: address,
-//         key: process.env.GOOGLE_MAPS_API_KEY,
-//         language: Language.en,
-//       },
-//     });
-//     // console.log("result in maps_geocode", result["data"]["results"][0])
-//   } catch (error) {
-//     console.error("Error in geocode:", error);
-//     throw new Error(
-//       "An error occurred while converting the address coordinates"
-//     );
-//   }
-//   return result["data"]["results"][0]["place_id"];
-// }
-
+/**
+ * @param {string} origin 
+ * @param {string} destination 
+ * @param {string} mode {"driving", "walking", etc.}
+ * @returns string (a polyline)
+ */
 async function getPolyline(origin, destination, mode = "driving") {
   console.log(`Claude called getPolyline("${origin}", "${destination})`);
   let result;
@@ -191,6 +143,10 @@ async function getPolyline(origin, destination, mode = "driving") {
   }
 }
 
+/**
+ * @param {string} query 
+ * @returns Place
+ */
 async function searchPlaces(query) {
   const request = {
     textQuery: query,
@@ -209,7 +165,13 @@ async function searchPlaces(query) {
   return result;
 }
 
-function maps_url(origin, destination, stops) {
+/**
+ * @param {Place} origin 
+ * @param {Place} destination 
+ * @param {Place[]} stops 
+ * @returns string (a URL)
+ */
+function getMapsUrl(origin, destination, stops) {
   const format_string = (place_object) => {
     return `${place_object["name"]}, ${place_object["address"]}`;
   };
@@ -232,6 +194,11 @@ function maps_url(origin, destination, stops) {
   return url.toString();
 }
 
+/**
+ * @param {string} query 
+ * @param {string} route (A polyline)
+ * @returns Place
+ */
 async function searchAlongRoute(query, route) {
   const request = {
     textQuery: query,
@@ -255,4 +222,4 @@ async function searchAlongRoute(query, route) {
   return result;
 }
 
-export { sendToClaude }
+export { sendToClaude };
