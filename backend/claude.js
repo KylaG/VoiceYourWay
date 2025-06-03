@@ -87,7 +87,7 @@ async function executeTool(response) {
   } else if (tool === "maps_directions") {
     result = await maps_directions(toolInput["origin"], toolInput["destination"], toolInput["mode"]);
   } else if (tool === "navigation_url_tool") {
-    result = maps_url(toolInput["origin"], toolInput["destination"]);
+    result = maps_url(toolInput["origin"], toolInput["destination"], toolInput["waypoints"]);
   }
 
   toolResults.push({
@@ -122,19 +122,30 @@ async function maps_directions(origin, destination, mode = 'driving') {
         }
       });
       console.log("result in maps_directions", result["data"]);
-      return result["data"];
+            return result["data"];
     } catch (error) {
       console.error("Error in directions:", error);
       throw new Error("An error occurred while getting directions");
     }
 }
 
-function maps_url(origin, destination) {
+function maps_url(origin, destination, waypoints) {
   const baseUrl = "https://www.google.com/maps/dir/";
   const url = new URL(baseUrl);
   url.searchParams.append("api", "1");
   url.searchParams.append("origin", origin);
   url.searchParams.append("destination", destination);
+  if (waypoints.length > 0) {
+    let waypointString = "";
+    for (let i = 0; i < waypoints.length; i++) {
+      waypointString += waypoints[i];
+      if (i < waypoints.length - 1) {
+        waypointString += "|";
+      } 
+    }
+    url.searchParams.append("waypoints", waypointString);
+  }
+  url.searchParams.append("mode", "driving");
   // We can also add optional place IDs, but the destination is still required.
   // Not sure how this works yet
   // if (destination_place_id) {

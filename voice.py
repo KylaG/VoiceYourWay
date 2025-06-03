@@ -161,7 +161,7 @@ def record_until_keypress():
         print("\nTranscription:")
         print(transcription.text)
         data = {
-        "prompt": f"Here is the Google Maps request from the user that you must fulfill: {transcription.text}"
+            "prompt": f"Here is the Google Maps request from the user that you must fulfill: {transcription.text}. You must use the Google Maps URL tool at the end to provide a link."
         }
         response = requests.post(url, json=data)
         print("Response from Claude: ", response.text)

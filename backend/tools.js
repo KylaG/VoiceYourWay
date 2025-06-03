@@ -51,7 +51,8 @@ export const NAVIGATION_URL_TOOL = {
   name: "navigation_url_tool",
   description: `This tool provides a Google Maps link for navigation from the
   indicated origin to indicated destination. When the user asks for
-  directions, this tool should be used as the final step as a way to provide the
+  directions, this tool should be used as the final step whenever the user asks 
+  for directions or navigation as a way to provide the
   user with a direct link to their desired route. The first parameter is the origin
   of the route. It should be a string which you'd enter into a navigation system to
   indicate the starting point of the route. The second parameter is the destination.
@@ -69,9 +70,16 @@ export const NAVIGATION_URL_TOOL = {
         type: "string",
         description: `The place where the route ends. The format should be
         something that would be recognized by a navigation system like Google Maps.`
+      },
+      waypoints: {
+        type: "array",
+        description: `Any places where we'd like to make a stop along the way. The
+        format should be something that would be recognized by a navigation system
+        like Google Maps. This array can be empty if the user has not requested
+        any stops.`
       }
     },
-    required: ["origin", "destination"]
+    required: ["origin", "destination", "waypoints"]
   }
 }
 
