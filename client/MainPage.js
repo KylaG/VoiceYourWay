@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, SafeAreaView, ScrollView } from 'react-native';
 import { Audio } from 'expo-av';
 import * as Location from 'expo-location';
 import Constants from 'expo-constants';
@@ -146,8 +146,9 @@ export default function MainPage() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Voice Your Way</Text>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Voice Your Way</Text>
 
       
       {/* Location display */}
@@ -182,7 +183,13 @@ export default function MainPage() {
           <Text style={styles.transcriptionText}>{transcriptionText}</Text>
         </View>
       )}
-      </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputTitle}>Backend Input:</Text>
+          <Text style={styles.inputText}>Awaiting input...</Text>
+        </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -192,13 +199,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingHorizontal: 20,
+    paddingTop: 40,
+    paddingBottom: 20,
+  },
   container: {
-    flex: 1,
     backgroundColor: '#f5f5f5',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    justifyContent: 'flex-start',
   },
   title: {
     fontSize: 32,
@@ -287,5 +297,32 @@ const styles = StyleSheet.create({
   locationText: {
     fontSize: 16,
     color: '#555',
+  },
+  inputContainer: {
+    marginTop: 20,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    width: '100%',
+    maxHeight: 200,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  inputTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 10,
+    color: '#333',
+  },
+  inputText: {
+    fontSize: 16,
+    color: '#555',
+    lineHeight: 24,
   },
 });
