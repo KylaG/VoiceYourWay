@@ -241,14 +241,14 @@ async function computeRouteMatrix(
 async function getPolyline(origin, destination, mode = "driving") {
   console.log(`Claude called getPolyline("${origin}", "${destination})`);
   let result;
-  const secondsSinceEpoch = Math.floor(Date.now() / 1000);
+  // const secondsSinceEpoch = Math.floor(Date.now() / 1000);
   try {
     result = await maps.directions({
       params: {
         origin: origin,
         destination: destination,
         mode: mode,
-        departure_time: secondsSinceEpoch,
+        // departure_time: secondsSinceEpoch,
         key: process.env.GOOGLE_MAPS_API_KEY,
       },
     });
