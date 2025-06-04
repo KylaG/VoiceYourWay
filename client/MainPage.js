@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, SafeAreaView, ScrollView, Linking } from 'react-native';
 import { Audio } from 'expo-av';
 import * as Location from 'expo-location';
 import Constants from 'expo-constants';
@@ -25,6 +25,8 @@ export default function MainPage() {
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcriptionText, setTranscriptionText] = useState('');
+  const [claudeResponse, setClaudeResponse] = useState('');
+  const [isProcessingClaude, setIsProcessingClaude] = useState(false);
   const [location, setLocation] = useState(null);
   const [locationName, setLocationName] = useState('');
 
@@ -126,7 +128,43 @@ export default function MainPage() {
       }
 
       const transcriptionData = await elevenLabsResponse.json();
-      setTranscriptionText(transcriptionData.text || 'No transcription available');
+      const transcriptionText = transcriptionData.text || 'No transcription available';
+      setTranscriptionText(transcriptionText);
+
+      // Send transcription to Claude backend (like voice.py does)
+      if (transcriptionText && transcriptionText !== 'No transcription available') {
+        setIsProcessingClaude(true);
+        try {
+          const claudeResponse = await fetch('http://10.19.217.134:3000/prompt', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              prompt: `Here is the Google Maps request from the user that you must fulfill: ${transcriptionText}.`
+            }),
+          });
+
+          if (!claudeResponse.ok) {
+            let errorMessage;
+            try {
+              const errorData = await claudeResponse.json();
+              console.log('Error data from backend:', errorData);
+              errorMessage = errorData.error || `Claude API request failed: ${claudeResponse.status}`;
+            } catch (parseError) {
+              errorMessage = `Claude API request failed: ${claudeResponse.status}`;
+            }
+            throw new Error(errorMessage);
+          }
+
+          const claudeData = await claudeResponse.json();
+          setClaudeResponse(claudeData.response || 'No response from Claude');
+        } catch (error) {
+          setClaudeResponse(error.message);
+        } finally {
+          setIsProcessingClaude(false);
+        }
+      }
     } catch (error) {
       console.error('Error during transcription:', error);
       setTranscriptionText('Error during transcription. Please try again.');
@@ -162,9 +200,9 @@ export default function MainPage() {
       <TouchableOpacity
         style={[styles.recordButton, isRecording && styles.recordingButton]}
         onPress={handleButtonPress}
-        disabled={isTranscribing}
+        disabled={isTranscribing || isProcessingClaude}
       >
-        {isTranscribing ? (
+        {isTranscribing || isProcessingClaude ? (
           <ActivityIndicator size="large" color="white" />
         ) : (
           <Text style={styles.buttonText}>
@@ -185,8 +223,25 @@ export default function MainPage() {
       )}
 
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Backend Input:</Text>
-          <Text style={styles.inputText}>Awaiting input...</Text>
+          <Text style={styles.inputTitle}>Claude Response:</Text>
+          {isProcessingClaude ? (
+            <ActivityIndicator size="small" color="#007AFF" style={{ marginTop: 10 }} />
+          ) : (
+            <TouchableOpacity onPress={() => {
+              if (claudeResponse && (claudeResponse.includes('http://') || claudeResponse.includes('https://'))) {
+                const urlMatch = claudeResponse.match(/(https?:\/\/[^\s]+)/);
+                if (urlMatch) {
+                  Linking.openURL(urlMatch[0]);
+                }
+              }
+            }}>
+              <Text style={[styles.inputText, 
+                (claudeResponse && (claudeResponse.includes('http://') || claudeResponse.includes('https://'))) && styles.linkText
+              ]}>
+                {claudeResponse || 'Awaiting input...'}
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
         </View>
       </ScrollView>
@@ -324,5 +379,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#555',
     lineHeight: 24,
+  },
+  linkText: {
+    color: '#007AFF',
+    textDecorationLine: 'underline',
   },
 });

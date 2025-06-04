@@ -66,7 +66,15 @@ async function sendToClaude(prompt) {
       // Execute the tool and get results
       const tool = response["content"].at(-1)["name"];
       if (tool === "format_tool") {
-        break;
+        // Extract the formatted output from Claude's tool use
+        const output_object = response["content"].at(-1)["input"];
+        const url = getMapsUrl(
+          output_object["origin"],
+          output_object["destination"],
+          output_object["stops"]
+        );
+        console.log(`getMapsUrl(${JSON.stringify(output_object)}) returned ${url}`);
+        return url;
       }
       const toolResults = await executeTool(response);
 
@@ -82,14 +90,7 @@ async function sendToClaude(prompt) {
     }
   } while (response.stop_reason === "tool_use");
 
-  const output_object = response["content"][1]["input"];
-  const url = getMapsUrl(
-    output_object["origin"],
-    output_object["destination"],
-    output_object["stops"]
-  );
-  console.log(`getMapsUrl(${output_object}) returned ${url}`);
-  return url;
+  throw new Error("Please specify your origin and destination for your trip.");
 }
 
 async function executeTool(response) {

@@ -1,10 +1,12 @@
 import express, { json } from 'express'
+import cors from 'cors';
 import 'dotenv/config';
 import { sendToClaude } from './claude.js'
 
 const app = express()
 const port = 3000
 
+app.use(cors());
 app.use(json())
 
 app.get('/', (req, res) => {
@@ -35,9 +37,23 @@ app.post('/prompt', async (req, res) => {
     
   } catch (error) {
     console.error('Error processing prompt:', error)
-    res.status(500).json({
-      error: 'Internal server error while processing prompt'
-    })
+    
+    // Check if this is a user-facing error message (from our validation)
+    if (error.message && (
+      error.message.includes('specify both an origin and destination') ||
+      error.message.includes('Please specify your') ||
+      error.message.includes("couldn't understand your request") ||
+      error.message.includes('for the trip')
+    )) {
+      res.status(400).json({
+        error: error.message
+      })
+    } else {
+      // For other errors, send the actual error message instead of generic message
+      res.status(500).json({
+        error: error.message || 'Internal server error while processing prompt'
+      })
+    }
   }
 })
 
