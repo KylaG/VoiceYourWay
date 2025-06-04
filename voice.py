@@ -19,6 +19,13 @@ client = ElevenLabs(api_key=ELEVEN_LABS_KEY)
 url = "http://localhost:3000/prompt"
 
 def main():
+    # text = "Find me coffee shops along the way from Stanford to the Golden Gate Bridge."
+    # data = {
+    #     "prompt": f"Here is the Google Maps request from the user that you must fulfill: {text}."
+    #         # You must use the Google Maps URL tool at the end to provide a link."
+    # }
+    # response = requests.post(url, json=data)
+    # print("Response from Claude: ", response.text)
     #record_and_transcribe(5)
     record_until_keypress()
     # audio_url = (
@@ -161,7 +168,8 @@ def record_until_keypress():
         print("\nTranscription:")
         print(transcription.text)
         data = {
-            "prompt": f"Here is the Google Maps request from the user that you must fulfill: {transcription.text}. You must use the Google Maps URL tool at the end to provide a link."
+            "prompt": f"Here is the Google Maps request from the user that you must fulfill: {transcription.text}."
+                # You must use the Google Maps URL tool at the end to provide a link."
         }
         response = requests.post(url, json=data)
         print("Response from Claude: ", response.text)
