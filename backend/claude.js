@@ -16,8 +16,10 @@ import {
   searchAlongRouteTool,
   getPolylineTool,
   formatTool,
+  routeMatrixTool,
 } from "./tools.js";
 import { PlacesClient } from "@googlemaps/places";
+import { RoutesClient } from "@googlemaps/routing";
 import { SYSTEM_PROMPT } from "./system_prompt.js";
 
 const anthropic = new Anthropic({
@@ -50,6 +52,7 @@ async function sendToClaude(prompt) {
         searchPlacesTool,
         getPolylineTool,
         searchAlongRouteTool,
+        routeMatrixTool,
         formatTool,
       ],
       system: SYSTEM_PROMPT,
@@ -90,7 +93,14 @@ async function sendToClaude(prompt) {
     }
   } while (response.stop_reason === "tool_use");
 
-  throw new Error("Please specify your origin and destination for your trip.");
+  const output_object = response["content"][1]["input"];
+    const url = getMapsUrl(
+    output_object["origin"],
+    output_object["destination"],
+    output_object["stops"]
+  );
+  console.log(`getMapsUrl(${output_object}) returned ${url}`);
+  return url;
 }
 
 async function executeTool(response) {
@@ -109,6 +119,11 @@ async function executeTool(response) {
       toolInput["search_query"],
       toolInput["route"]
     );
+  } else if (tool === "compute_route_matrix") {
+    result = await computeRouteMatrix(
+      toolInput["origins"],
+      toolInput["destinations"],
+    );
   }
 
   toolResults.push({
@@ -118,21 +133,130 @@ async function executeTool(response) {
   return toolResults;
 }
 
+async function computeRouteMatrix(
+  origins,
+  destinations,
+  travelMode = "DRIVE",
+  routingPreference = "TRAFFIC_AWARE",
+  departureTime = null
+) {
+  console.log(
+    `Claude called computeRouteMatrix with ${origins.length} origins and ${destinations.length} destinations`
+  );
+
+  const routesClient = new RoutesClient({
+    apiKey: process.env.GOOGLE_MAPS_API_KEY,
+  });
+
+  try {
+    // Convert string locations to waypoint objects
+    const formatWaypoint = (location) => ({
+      waypoint: {
+        address: location,
+      },
+    });
+
+    const originWaypoints = origins.map(formatWaypoint);
+    const destinationWaypoints = destinations.map(formatWaypoint);
+
+    // Prepare request
+    const request = {
+      origins: originWaypoints,
+      destinations: destinationWaypoints,
+      travelMode: travelMode,
+      routingPreference: routingPreference,
+    };
+
+    // Add departure time if provided
+    if (departureTime) {
+      request.departureTime = {
+        seconds: Math.floor(new Date(departureTime).getTime() / 1000),
+      };
+    }
+
+    // Make the API call and collect results
+    const results = [];
+    const stream = await routesClient.computeRouteMatrix(request, {
+      otherArgs: {
+        headers: {
+          "X-Goog-FieldMask":
+            "originIndex,destinationIndex,duration,distanceMeters,status,condition,staticDuration",
+        },
+      },
+    });
+
+    return new Promise((resolve, reject) => {
+      stream.on("data", (response) => {
+        results.push(response);
+      });
+
+      stream.on("error", (err) => {
+        console.error("Error in computeRouteMatrix:", err);
+        reject(new Error(`Route matrix computation failed: ${err.message}`));
+      });
+
+      stream.on("end", () => {
+        // Process and format results
+        const formattedResults = {
+          origins: origins,
+          destinations: destinations,
+          matrix: results.map((element) => ({
+            originIndex: element.originIndex,
+            destinationIndex: element.destinationIndex,
+            origin: origins[element.originIndex],
+            destination: destinations[element.destinationIndex],
+            status: element.status?.code || "OK",
+            condition: element.condition,
+            distanceMeters: element.distanceMeters,
+            duration: element.duration,
+            durationInTraffic: element.staticDuration,
+            // Add convenience fields for easy access
+            durationSeconds: element.duration?.seconds
+              ? parseInt(element.duration.seconds)
+              : null,
+            staticDurationSeconds: element.staticDuration?.seconds
+              ? parseInt(element.staticDuration.seconds)
+              : null,
+          })),
+          summary: {
+            totalElements: results.length,
+            successfulRoutes: results.filter(
+              (r) => r.condition === "ROUTE_EXISTS"
+            ).length,
+            failedRoutes: results.filter((r) => r.condition !== "ROUTE_EXISTS")
+              .length,
+          },
+        };
+
+        console.log(
+          `computeRouteMatrix returned ${results.length} route combinations`
+        );
+        resolve(formattedResults);
+      });
+    });
+  } catch (error) {
+    console.error("Error in computeRouteMatrix:", error);
+    throw new Error(`Route matrix computation failed: ${error.message}`);
+  }
+}
+
 /**
- * @param {string} origin 
- * @param {string} destination 
+ * @param {string} origin
+ * @param {string} destination
  * @param {string} mode {"driving", "walking", etc.}
  * @returns string (a polyline)
  */
 async function getPolyline(origin, destination, mode = "driving") {
   console.log(`Claude called getPolyline("${origin}", "${destination})`);
   let result;
+  // const secondsSinceEpoch = Math.floor(Date.now() / 1000);
   try {
     result = await maps.directions({
       params: {
         origin: origin,
         destination: destination,
         mode: mode,
+        // departure_time: secondsSinceEpoch,
         key: process.env.GOOGLE_MAPS_API_KEY,
       },
     });

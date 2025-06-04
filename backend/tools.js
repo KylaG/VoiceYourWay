@@ -1,5 +1,37 @@
 // Tool definitions for Claude API integration
 
+export const routeMatrixTool = {
+  name: "compute_route_matrix",
+  description:
+    "Compute travel times and distances between multiple origins and destinations. This tool is useful for comparing route options, finding the closest/fastest destinations from multiple starting points, or analyzing travel patterns between multiple locations. Returns a matrix showing duration and distance for each origin-destination pair.",
+  input_schema: {
+    type: "object",
+    properties: {
+      origins: {
+        type: "array",
+        description: "Array of starting locations (addresses or place names)",
+        items: {
+          type: "string",
+          description: "Origin location as address or place name (e.g., 'Seattle, WA' or 'Space Needle, Seattle')"
+        },
+        minItems: 1,
+        maxItems: 25
+      },
+      destinations: {
+        type: "array",
+        description: "Array of destination locations (addresses or place names)",
+        items: {
+          type: "string",
+          description: "Destination location as address or place name (e.g., 'Portland, OR' or 'Pike Place Market, Seattle')"
+        },
+        minItems: 1,
+        maxItems: 25
+      },
+    },
+    required: ["origins", "destinations"]
+  }
+};
+
 export const searchPlacesTool = {
   name: "search_places",
   description:
