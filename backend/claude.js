@@ -93,14 +93,21 @@ async function sendToClaude(prompt) {
     }
   } while (response.stop_reason === "tool_use");
 
-  const output_object = response["content"][1]["input"];
-    const url = getMapsUrl(
-    output_object["origin"],
-    output_object["destination"],
-    output_object["stops"]
-  );
-  console.log(`getMapsUrl(${output_object}) returned ${url}`);
-  return url;
+  throw new Error("Please specify your origin and destination for your trip.");
+  // const output_object = response["content"][1]["input"];
+  
+  // // Check if origin and destination are provided
+  // if (!output_object["origin"] || !output_object["destination"]) {
+  //   throw new Error("Please specify your origin and destination for your trip.");
+  // }
+  
+  // const url = getMapsUrl(
+  //   output_object["origin"],
+  //   output_object["destination"],
+  //   output_object["stops"]
+  // );
+  // console.log(`getMapsUrl(${output_object}) returned ${url}`);
+  // return url;
 }
 
 async function executeTool(response) {

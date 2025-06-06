@@ -223,7 +223,7 @@ export default function MainPage() {
       )}
 
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Claude Response:</Text>
+          <Text style={styles.inputTitle}>Your Route:</Text>
           {isProcessingClaude ? (
             <ActivityIndicator size="small" color="#007AFF" style={{ marginTop: 10 }} />
           ) : (
