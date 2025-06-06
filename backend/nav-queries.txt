@@ -1,0 +1,95 @@
+# Navigation System Test Queries
+# Format: DIFFICULTY_LEVEL|QUERY_TEXT
+
+EASY|Take me from Stanford University to the Golden Gate Bridge
+EASY|Navigate from 1 Hacker Way, Menlo Park to Pier 39, San Francisco
+EASY|I need directions from Los Angeles International Airport to Disneyland
+EASY|Get me from Times Square, New York to Central Park
+EASY|Route me from the Space Needle in Seattle to Pike Place Market
+EASY|Take me from Harvard University to Fenway Park in Boston
+EASY|Navigate from Chicago O'Hare Airport to Navy Pier
+EASY|I want to go from the White House to the Lincoln Memorial
+EASY|Direct me from Miami Beach to the Everglades National Park entrance
+EASY|Get me from the Las Vegas Strip to Red Rock Canyon
+EASY|Take me from the Hollywood Sign to Santa Monica Pier
+EASY|Navigate from Denver International Airport to Red Rocks Amphitheatre
+EASY|I need to get from the Statue of Liberty to Brooklyn Bridge
+EASY|Route me from Fisherman's Wharf to Alcatraz Island ferry terminal
+EASY|Take me from the French Quarter in New Orleans to the Garden District
+EASY|Navigate from the University of Texas at Austin to South by Southwest headquarters
+EASY|Get me from the Gateway Arch in St. Louis to Busch Stadium
+EASY|I want directions from the Portland Head Light to downtown Portland, Maine
+EASY|Take me from the Art Institute of Chicago to Millennium Park
+EASY|Navigate from the Golden Gate Park to Lombard Street in San Francisco
+EASY|Route me from the National Mall to Georgetown in Washington DC
+EASY|Get me from the Nashville Grand Ole Opry to Music Row
+EASY|Take me from the Inner Harbor in Baltimore to Fort McHenry
+EASY|Navigate from the Georgia Aquarium to the World of Coca-Cola in Atlanta
+EASY|I need directions from the Philadelphia Museum of Art to Independence Hall
+EASY|Route me from the Kennedy Space Center to Cocoa Beach
+EASY|Take me from the Pearl Harbor Memorial to Waikiki Beach
+EASY|Navigate from the Hoover Dam to the Las Vegas Strip
+EASY|Get me from the Alamo in San Antonio to the River Walk
+EASY|I want to go from the Cleveland Museum of Art to the Rock and Roll Hall of Fame
+
+MEDIUM|Take me from Stanford University to the Golden Gate Bridge, with a stop at Half Moon Bay
+MEDIUM|Navigate from Los Angeles International Airport to Disneyland, stopping at In-N-Out Burger on Sepulveda Boulevard
+MEDIUM|I need to go from Times Square to Central Park, with a stop at the Empire State Building
+MEDIUM|Route me from the Space Needle to Pike Place Market, stopping at the Museum of Pop Culture
+MEDIUM|Take me from Harvard University to Fenway Park, with a stop at the Boston Common
+MEDIUM|Navigate from Chicago O'Hare Airport to Navy Pier, stopping at Millennium Park
+MEDIUM|Get me from the White House to the Lincoln Memorial, with a stop at the Washington Monument
+MEDIUM|I want to go from Miami Beach to the Everglades, stopping at Coral Gables
+MEDIUM|Take me from the Las Vegas Strip to Red Rock Canyon, with a stop at the Springs Preserve
+MEDIUM|Navigate from the Hollywood Sign to Santa Monica Pier, stopping at the Getty Center
+MEDIUM|Route me from Denver International Airport to Red Rocks Amphitheatre, with a stop at downtown Denver
+MEDIUM|I need to get from the Statue of Liberty to Brooklyn Bridge, stopping at Stone Street
+MEDIUM|Take me from Fisherman's Wharf to Alcatraz ferry terminal, with a stop at Coit Tower
+MEDIUM|Navigate from the French Quarter to the Garden District, stopping at Magazine Street
+MEDIUM|Get me from the University of Texas to SXSW headquarters, with a stop at the State Capitol
+MEDIUM|I want directions from the Gateway Arch to Busch Stadium, stopping at the City Museum
+MEDIUM|Take me from the Portland Head Light to downtown Portland, with a stop at the Old Port
+MEDIUM|Navigate from the Art Institute to Millennium Park, stopping at Grant Park
+MEDIUM|Route me from Golden Gate Park to Lombard Street, with a stop at Union Square
+MEDIUM|Get me from the National Mall to Georgetown, stopping at Dupont Circle
+MEDIUM|Take me from the Grand Ole Opry to Music Row, with a stop at the Country Music Hall of Fame
+MEDIUM|Navigate from the Inner Harbor to Fort McHenry, stopping at Federal Hill Park
+MEDIUM|I need to go from the Georgia Aquarium to the World of Coca-Cola, with a stop at Centennial Olympic Park
+MEDIUM|Route me from the Philadelphia Museum of Art to Independence Hall, stopping at the Franklin Institute
+MEDIUM|Take me from the Kennedy Space Center to Cocoa Beach, with a stop at the Merritt Island National Wildlife Refuge
+MEDIUM|Navigate from Pearl Harbor to Waikiki Beach, stopping at downtown Honolulu
+MEDIUM|Get me from the Hoover Dam to the Las Vegas Strip, with a stop at Lake Mead
+MEDIUM|I want to go from the Alamo to the River Walk, stopping at the Majestic Square
+MEDIUM|Take me from the Cleveland Museum of Art to the Rock Hall, with a stop at the West Side Market
+MEDIUM|Navigate from Yosemite Valley to San Francisco, stopping at Modesto
+
+HARD|Take me from Stanford University to the Golden Gate Bridge with a stop for coffee along the way
+HARD|Navigate from Los Angeles International Airport to Disneyland, but I need to grab lunch somewhere good
+HARD|I want to go from Times Square to Central Park, stopping for bagels on the way
+HARD|Route me from the Space Needle to Pike Place Market, with a stop at a bookstore
+HARD|Take me from Harvard University to Fenway Park, but I need to pick up flowers first
+HARD|Navigate from Chicago O'Hare to Navy Pier, stopping at a deep dish pizza place
+HARD|Get me from the White House to the Lincoln Memorial, with a stop at a gift shop
+HARD|I need to go from Miami Beach to the Everglades, but stop at a Cuban restaurant first
+HARD|Take me from the Las Vegas Strip to Red Rock Canyon, with a stop for gas
+HARD|Navigate from the Hollywood Sign to Santa Monica Pier, stopping at a health food store
+HARD|Route me from Denver International Airport to Red Rocks, but I need to find an ATM
+HARD|I want to get from the Statue of Liberty to Brooklyn Bridge, stopping for pizza
+HARD|Take me from Fisherman's Wharf to Alcatraz ferry terminal, with a stop at a souvenir shop
+HARD|Navigate from the French Quarter to the Garden District, stopping for beignets
+HARD|Get me from UT Austin to SXSW headquarters, but I need to find a pharmacy
+HARD|I want directions from the Gateway Arch to Busch Stadium, stopping for barbecue
+HARD|Take me from Portland Head Light to downtown Portland, with a stop at a lobster restaurant
+HARD|Navigate from the Art Institute to Millennium Park, stopping at an art supply store
+HARD|Route me from Golden Gate Park to Lombard Street, but I need to find a parking garage
+HARD|Get me from the National Mall to Georgetown, with a stop at a wine bar
+HARD|Take me from the Grand Ole Opry to Music Row, stopping at a guitar shop
+HARD|Navigate from the Inner Harbor to Fort McHenry, but I need to find a seafood restaurant
+HARD|I need to go from the Georgia Aquarium to Coca-Cola World, with a stop for ice cream
+HARD|Route me from the Philadelphia Museum to Independence Hall, stopping at a cheesesteak place
+HARD|Take me from Kennedy Space Center to Cocoa Beach, but I need to find a surf shop
+HARD|Navigate from Pearl Harbor to Waikiki Beach, stopping for poke
+HARD|Get me from the Hoover Dam to the Las Vegas Strip, with a stop at a casino
+HARD|I want to go from the Alamo to the River Walk, stopping for tex-mex food
+HARD|Take me from the Cleveland Museum to the Rock Hall, but I need to find a record store
+HARD|Navigate from Yosemite Valley to San Francisco, stopping at a farmers market
