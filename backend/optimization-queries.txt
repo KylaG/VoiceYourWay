@@ -1,0 +1,95 @@
+# Optimal Route Navigation Test Queries
+# Format: DIFFICULTY_LEVEL|QUERY_TEXT
+
+EASY|I'm starting at Stanford University. Find me an optimal route to visit the Golden Gate Bridge and Half Moon Bay
+EASY|Beginning from Los Angeles International Airport, what's the most efficient way to hit both Disneyland and Santa Monica Pier
+EASY|I'm at Times Square. Plan the best route to see Central Park and the Brooklyn Bridge
+EASY|Starting from the Space Needle in Seattle, help me map out the shortest path to Pike Place Market and the University of Washington
+EASY|I'm at Harvard University. What's the quickest route to visit Fenway Park and the Boston Tea Party Ships
+EASY|From Chicago O'Hare Airport, calculate the optimal path to Navy Pier and Millennium Park
+EASY|I'm at the White House. Figure out the most efficient route to the Lincoln Memorial and the Washington Monument
+EASY|Starting from Miami Beach, what order should I visit the Everglades National Park and Key Biscayne to minimize travel time
+EASY|I'm at the Las Vegas Strip. Create the best route to Red Rock Canyon and the Hoover Dam
+EASY|Beginning at the Hollywood Sign, what's the smartest way to visit Santa Monica Pier and Venice Beach
+EASY|I'm at Denver International Airport. Design the optimal route to Red Rocks Amphitheatre and downtown Denver
+EASY|Starting from the Statue of Liberty, determine the most efficient path to Ellis Island and One World Trade Center
+EASY|I'm at Fisherman's Wharf in San Francisco. Plan the best way to visit Alcatraz Island and Lombard Street
+EASY|From the French Quarter in New Orleans, what's the shortest route to the Garden District and Lake Pontchartrain
+EASY|I'm at the University of Texas at Austin. Calculate the quickest path to the State Capitol and Zilker Park
+EASY|Starting from the Gateway Arch in St. Louis, help me optimize my route to Busch Stadium and Forest Park
+EASY|I'm at the Portland Head Light in Maine. What's the most time-efficient way to visit downtown Portland and Casco Bay
+EASY|Beginning at the Art Institute of Chicago, map out the best route to Grant Park and the Museum of Science and Industry
+EASY|I'm at Golden Gate Park. Find the optimal path to Union Square and Coit Tower
+EASY|Starting from the National Mall in Washington DC, what's the smartest route to Georgetown and Adams Morgan
+EASY|I'm at the Grand Ole Opry in Nashville. Plan the most efficient way to visit Music Row and the Parthenon
+EASY|From the Inner Harbor in Baltimore, determine the best route to Fort McHenry and Federal Hill Park
+EASY|I'm at the Georgia Aquarium in Atlanta. Calculate the optimal path to the World of Coca-Cola and Piedmont Park
+EASY|Starting from the Philadelphia Museum of Art, what's the quickest way to reach Independence Hall and the Liberty Bell
+EASY|I'm at the Kennedy Space Center. Design the most efficient route to Cocoa Beach and the Merritt Island Wildlife Refuge
+EASY|Beginning at Pearl Harbor in Hawaii, what's the best path to Waikiki Beach and Diamond Head
+EASY|I'm at the Hoover Dam. Help me plan the optimal route to Lake Mead and the Valley of Fire State Park
+EASY|Starting from the Alamo in San Antonio, what's the most time-saving route to the River Walk and the Pearl District
+EASY|I'm at the Cleveland Museum of Art. Find the best way to visit the Rock and Roll Hall of Fame and the West Side Market
+EASY|From Yosemite Valley, what's the optimal route to Glacier Point and Mariposa Grove
+
+MEDIUM|I'm starting at Jones Beach. What's the best way to hit a coffee shop and a grocery store
+MEDIUM|Beginning from the Empire State Building, plan the most efficient route to a bookstore and Central Park
+MEDIUM|I'm at UC Berkeley. Help me find the optimal path to a gas station and the Oakland Bay Bridge
+MEDIUM|Starting from Pike Place Market in Seattle, calculate the quickest route to a pharmacy and the Seattle Art Museum
+MEDIUM|I'm at Fenway Park in Boston. What's the smartest way to visit a restaurant and Harvard Square
+MEDIUM|From Union Station in Chicago, design the best route to an ATM and Navy Pier
+MEDIUM|I'm at the Jefferson Memorial. Figure out the most efficient path to a gift shop and the Smithsonian Castle
+MEDIUM|Beginning at South Beach in Miami, what's the optimal way to reach a bank and Coconut Grove
+MEDIUM|I'm at the Bellagio in Las Vegas. Plan the shortest route to a grocery store and the Forum Shops at Caesars
+MEDIUM|Starting from the Getty Center in Los Angeles, help me map out the best path to a coffee shop and Malibu Beach
+MEDIUM|I'm at the Colorado State Capitol in Denver. What's the most time-efficient route to a hardware store and the Denver Art Museum
+MEDIUM|From Battery Park in New York, calculate the optimal way to visit a deli and the 9/11 Memorial
+MEDIUM|I'm at Pier 39 in San Francisco. Determine the best route to a souvenir shop and Golden Gate Park
+MEDIUM|Beginning at Magazine Street in New Orleans, what's the smartest path to a flower shop and the Audubon Aquarium
+MEDIUM|I'm at the Texas State Fair grounds in Dallas. Plan the most efficient route to a gas station and the Dallas Arboretum
+MEDIUM|Starting from the City Museum in St. Louis, help me find the optimal way to a restaurant and the Missouri Botanical Garden
+MEDIUM|I'm at the Old Port in Portland, Maine. What's the quickest route to a seafood market and Eastern Promenade
+MEDIUM|From Wicker Park in Chicago, design the best path to a record store and Lincoln Park Zoo
+MEDIUM|I'm at Haight-Ashbury in San Francisco. Calculate the most efficient route to a vintage store and the Castro District
+MEDIUM|Beginning at Dupont Circle in Washington DC, what's the optimal way to reach a wine shop and the Kennedy Center
+MEDIUM|I'm at Broadway in Nashville. Figure out the best route to a guitar store and the Country Music Hall of Fame
+MEDIUM|Starting from Federal Hill in Baltimore, help me plan the smartest path to a crab house and the American Visionary Art Museum
+MEDIUM|I'm at Little Five Points in Atlanta. What's the most time-saving route to a thrift store and the Martin Luther King Jr. National Historic Park
+MEDIUM|From South Street in Philadelphia, determine the optimal way to visit a cheesesteak place and the Philadelphia Zoo
+MEDIUM|I'm at Cocoa Beach. Plan the best route to a surf shop and the Brevard Zoo
+MEDIUM|Beginning at Chinatown in Honolulu, what's the most efficient path to a poke restaurant and Iolani Palace
+MEDIUM|I'm at Red Rock Canyon. Help me calculate the quickest route to a visitor center and Lake Las Vegas
+MEDIUM|Starting from the Pearl Farmers Market in San Antonio, what's the smartest way to hit a taco shop and the San Antonio Missions
+MEDIUM|I'm at University Circle in Cleveland. Design the optimal route to a bookstore and the Cleveland Metroparks Zoo
+MEDIUM|From Wawona in Yosemite, what's the best path to a camping supply store and Tunnel View
+
+HARD|I'm starting at Stanford University. What's the most efficient way to hit a grocery store, a coffee shop, and the Target in Mountain View
+HARD|Beginning from UCLA, plan the optimal route to a gas station, In-N-Out Burger, and the Santa Monica Pier
+HARD|I'm at Columbia University. Help me map out the best path to a pharmacy, a bookstore, and the Metropolitan Museum of Art
+HARD|Starting from the University of Washington, calculate the smartest route to a coffee shop, REI flagship store, and the Seattle Center
+HARD|I'm at MIT. What's the quickest way to visit a restaurant, Harvard Square, and the USS Constitution
+HARD|From Northwestern University, design the most efficient path to a grocery store, Wrigley Field, and a deep dish pizza place
+HARD|I'm at George Washington University. Figure out the optimal route to an ATM, the Lincoln Memorial, and a wine bar
+HARD|Beginning at the University of Miami, what's the best way to reach a Cuban restaurant, South Beach, and a grocery store
+HARD|I'm at UNLV. Plan the most time-saving route to a casino, a gas station, and the Fountains of Bellagio
+HARD|Starting from USC, help me find the smartest path to a taco truck, the Hollywood Walk of Fame, and a parking garage
+HARD|I'm at the University of Colorado Boulder. Calculate the optimal way to visit a sporting goods store, Pearl Street Mall, and a coffee roaster
+HARD|From NYU, what's the most efficient route to a pizza place, the High Line, and a vintage clothing store
+HARD|I'm at UC San Francisco. Determine the best path to a pharmacy, Lombard Street, and a dim sum restaurant
+HARD|Beginning at Tulane University, what's the quickest route to a beignet cafe, the French Market, and a jazz club
+HARD|I'm at Rice University in Houston. Design the optimal way to hit a BBQ joint, the Houston Zoo, and a gas station
+HARD|Starting from Washington University in St. Louis, help me plan the smartest route to a frozen custard shop, the Gateway Arch, and a brewery
+HARD|I'm at the University of Southern Maine. What's the most time-efficient path to a lobster shack, the Portland Head Light, and an art gallery
+HARD|From DePaul University, calculate the best route to a bakery, Millennium Park, and a record store
+HARD|I'm at San Francisco State University. Figure out the optimal way to visit a burrito place, Ocean Beach, and a farmers market
+HARD|Beginning at American University, what's the most efficient route to a coffee shop, the Washington National Cathedral, and a bookstore
+HARD|I'm at Vanderbilt University. Plan the smartest path to a hot chicken restaurant, the Ryman Auditorium, and a guitar shop
+HARD|Starting from Johns Hopkins University, help me find the best way to reach a crab cake restaurant, Fort McHenry, and an antique store
+HARD|I'm at Emory University. Determine the optimal route to a soul food restaurant, the Atlanta BeltLine, and a craft beer store
+HARD|From Temple University, what's the quickest path to a hoagie shop, the Philadelphia Museum of Art, and a thrift store
+HARD|I'm at Florida Institute of Technology. Design the most time-saving route to a surf shop, the Brevard Zoo, and a seafood restaurant
+HARD|Beginning at the University of Hawaii, what's the best way to visit a shave ice stand, Hanauma Bay, and a luau venue
+HARD|I'm at UNLV. Calculate the optimal path to a buffet restaurant, the Neon Museum, and a souvenir shop
+HARD|Starting from Trinity University in San Antonio, help me plan the smartest route to a breakfast taco place, the Majestic Square, and a western wear store
+HARD|I'm at Case Western Reserve University. What's the most efficient way to hit a pierogi restaurant, the Cleveland Museum of Natural History, and a vintage record shop
+HARD|From UC Merced, figure out the best route to a farm stand, Yosemite Valley, and a camping gear store
