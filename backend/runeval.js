@@ -9,7 +9,8 @@
  */
 
 
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync, mkdirSync } from "fs"
+import { dirname } from "path";
 import { sendToClaude } from "./claude.js";
 
 
@@ -58,18 +59,18 @@ async function main() {
     writeFileSync(hardOutputFile, "");
 
     // Process easy queries
-    for (let i = 0; i < queries.easy.length; i++) {
-        console.log(`Working on EASY query ${i}:`, queries.easy[i]);
-        writeFileSync(easyOutputFile, queries.easy[i] + "\n", { flag: "a" });
-        try {
-            const url = await sendToClaude(queries.easy[i]);
-            console.log("Result:", url);
-            writeFileSync(easyOutputFile, url + "\n", { flag: "a" });
-        } catch (error) {
-            console.log("Result:", error);
-            writeFileSync(easyOutputFile, "Error\n", { flag: "a" });
-        }
-    }
+    // for (let i = 0; i < queries.easy.length; i++) {
+    //     console.log(`Working on EASY query ${i}:`, queries.easy[i]);
+    //     writeFileSync(easyOutputFile, queries.easy[i] + "\n", { flag: "a" });
+    //     try {
+    //         const url = await sendToClaude(queries.easy[i]);
+    //         console.log("Result:", url);
+    //         writeFileSync(easyOutputFile, url + "\n", { flag: "a" });
+    //     } catch (error) {
+    //         console.log("Result:", error);
+    //         writeFileSync(easyOutputFile, "Error\n", { flag: "a" });
+    //     }
+    // }
 
     // Process medium queries
     for (let i = 0; i < queries.medium.length; i++) {
@@ -85,19 +86,19 @@ async function main() {
         }
     }
 
-    // Process hard queries
-    for (let i = 0; i < queries.hard.length; i++) {
-        console.log(`Working on HARD query ${i}:`, queries.hard[i]);
-        writeFileSync(hardOutputFile, queries.hard[i] + "\n", { flag: "a" });
-        try {
-            const url = await sendToClaude(queries.hard[i]);
-            console.log("Result:", url);
-            writeFileSync(hardOutputFile, url + "\n", { flag: "a" });
-        } catch (error) {
-            console.log("Result:", error);
-            writeFileSync(hardOutputFile, "Error\n", { flag: "a" });
-        }
-    }
+    // // Process hard queries
+    // for (let i = 0; i < queries.hard.length; i++) {
+    //     console.log(`Working on HARD query ${i}:`, queries.hard[i]);
+    //     writeFileSync(hardOutputFile, queries.hard[i] + "\n", { flag: "a" });
+    //     try {
+    //         const url = await sendToClaude(queries.hard[i]);
+    //         console.log("Result:", url);
+    //         writeFileSync(hardOutputFile, url + "\n", { flag: "a" });
+    //     } catch (error) {
+    //         console.log("Result:", error);
+    //         writeFileSync(hardOutputFile, "Error\n", { flag: "a" });
+    //     }
+    // }
 }
 
 
