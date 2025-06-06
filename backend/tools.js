@@ -59,7 +59,7 @@ export const getPolylineTool = {
       origin: {
         type: "string",
         description:
-          "The starting location with name and address (e.g., 'Starbucks, 123 Main St, Seattle WA'). If not provided, will use current location as starting point.",
+          "The starting location with name and address (e.g., 'Starbucks, 123 Main St, Seattle WA'). If not provided, will use the COORDINATES of the current location as starting point.",
       },
       destination: {
         type: "string",

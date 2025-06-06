@@ -38,10 +38,17 @@ const placesClient = new PlacesClient({
  * Send query to Claude and provide Claude tools to respond to the query.
  * This should return a URL which is a link to a Google Maps route.
  * @param {string} prompt : Prompt for Claude
+ * @param {string} userLocation : User's current location as "lat,lng" coordinates
  */
-async function sendToClaude(prompt) {
+async function sendToClaude(prompt, userLocation = null) {
   console.log("Send to Claude starting.");
-  const messages = [{ role: "user", content: prompt }];
+  
+  let enhancedPrompt = prompt;
+  if (userLocation) {
+    enhancedPrompt = `${prompt}\n\nUser's current location coordinates: ${userLocation} (use JUST these coordinates as the default origin if not specified otherwise, no other text surrounding it)`;
+  }
+  
+  const messages = [{ role: "user", content: enhancedPrompt }];
 
   let response;
   do {
@@ -79,7 +86,7 @@ async function sendToClaude(prompt) {
         console.log(`getMapsUrl(${JSON.stringify(output_object)}) returned ${url}`);
         return url;
       }
-      const toolResults = await executeTool(response);
+      const toolResults = await executeTool(response, userLocation);
 
       // Add tool results to messages
       messages.push({
@@ -110,7 +117,7 @@ async function sendToClaude(prompt) {
   // return url;
 }
 
-async function executeTool(response) {
+async function executeTool(response, userLocation = null) {
   const toolResults = [];
   const toolUseId = response["content"].at(-1)["id"];
   const toolInput = response["content"].at(-1)["input"];
@@ -120,7 +127,9 @@ async function executeTool(response) {
   if (tool === "search_places") {
     result = await searchPlaces(toolInput["search_query"]);
   } else if (tool === "get_polyline") {
-    result = await getPolyline(toolInput["origin"], toolInput["destination"]);
+    // Use userLocation as default origin if not provided
+    const origin = toolInput["origin"] || userLocation;
+    result = await getPolyline(origin, toolInput["destination"]);
   } else if (tool === "search_along_route") {
     result = await searchAlongRoute(
       toolInput["search_query"],
@@ -157,11 +166,30 @@ async function computeRouteMatrix(
 
   try {
     // Convert string locations to waypoint objects
-    const formatWaypoint = (location) => ({
-      waypoint: {
-        address: location,
-      },
-    });
+    const formatWaypoint = (location) => {
+      // Check if location is in lat,lng coordinate format
+      const coordPattern = /^-?\d+\.?\d*,-?\d+\.?\d*$/;
+      if (coordPattern.test(location.trim())) {
+        const [lat, lng] = location.trim().split(',').map(coord => parseFloat(coord));
+        return {
+          waypoint: {
+            location: {
+              latLng: {
+                latitude: lat,
+                longitude: lng
+              }
+            }
+          }
+        };
+      } else {
+        // Treat as address
+        return {
+          waypoint: {
+            address: location,
+          }
+        };
+      }
+    };
 
     const originWaypoints = origins.map(formatWaypoint);
     const destinationWaypoints = destinations.map(formatWaypoint);
@@ -305,6 +333,9 @@ async function searchPlaces(query) {
  */
 function getMapsUrl(origin, destination, stops) {
   const format_string = (place_object) => {
+    if (place_object["name"] == "Current Location"){
+      return `${place_object["address"]}`;
+    }
     return `${place_object["name"]}, ${place_object["address"]}`;
   };
   const baseUrl = "https://www.google.com/maps/dir/";

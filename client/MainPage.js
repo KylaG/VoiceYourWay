@@ -141,7 +141,8 @@ export default function MainPage() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              prompt: `Here is the Google Maps request from the user that you must fulfill: ${transcriptionText}.`
+              prompt: `Here is the Google Maps request from the user that you must fulfill: ${transcriptionText}.`,
+              location: location ? `${location.coords.latitude},${location.coords.longitude}` : null
             }),
           });
 

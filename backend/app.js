@@ -15,8 +15,9 @@ app.get('/', (req, res) => {
 
 app.post('/prompt', async (req, res) => {
   try {
-    const { prompt } = req.body;
+    const { prompt, location } = req.body;
     console.log("Request:", prompt);
+    console.log("User location:", location);
 
     // Validate that prompt exists
     if (!prompt || typeof prompt !== "string") {
@@ -26,7 +27,7 @@ app.post('/prompt', async (req, res) => {
     }
 
     // This should be a URL
-    const response = await sendToClaude(prompt);
+    const response = await sendToClaude(prompt, location);
     
     // Return the response
     res.json({
