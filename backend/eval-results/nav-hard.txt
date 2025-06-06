@@ -1,0 +1,33 @@
+Take me to the city with a stop for coffee along the way
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=City+Center%2C+2675+Geary+Blvd%2C+San+Francisco%2C+CA+94118%2C+USA&waypoints=Matching+Half%2C+1799+McAllister+St%2C+San+Francisco%2C+CA+94115%2C+USA&mode=driving
+Navigate to a good hiking spot, but I need to grab lunch somewhere good
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Palo+Alto+Baylands+Nature+Preserve+Trail%2C+Palo+Alto%2C+CA+94303%2C+USA&waypoints=The+Melt%2C+180+El+Camino+Real%2C+Palo+Alto%2C+CA+94304%2C+USA&mode=driving
+I want to go to the mall, stopping for bagels on the way
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Town+%26+Country+Village%2C+855+El+Camino+Real%2C+Palo+Alto%2C+CA+94301%2C+USA&waypoints=Boichik+Bagels+Palo+Alto%2C+855+El+Camino+Real+%23115%2C+Palo+Alto%2C+CA+94301%2C+USA&mode=driving
+Route me to a nice beach area, with a stop at a bookstore
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Coyote+Point+Beach%2C+Coyote+Point+Beach%2C+Bay+Trail%2C+San+Mateo%2C+CA+94401%2C+USA&waypoints=Bell%27s+Books%2C+536+Emerson+St%2C+Palo+Alto%2C+CA+94301%2C+USA&mode=driving
+Take me to the concert venue, but I need to pick up flowers first
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Bing+Concert+Hall%2C+327+Lasuen+St%2C+Stanford%2C+CA+94305%2C+USA&waypoints=Village+Flower+Shoppe%2C+2237+El+Camino+Real%2C+Palo+Alto%2C+CA+94306%2C+USA&mode=driving
+Navigate to a nice park, stopping at a deep dish pizza place
+Error
+Get me to the baseball stadium, with a stop at a gift shop
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Klein+Field+at+Sunken+Diamond%2C+151+Sam+MacDonald+Mall%2C+Stanford%2C+CA+94305%2C+USA&waypoints=United+Nations+Association+Gift+Shop%2C+552+Emerson+St%2C+Palo+Alto%2C+CA+94301%2C+USA&mode=driving
+I need to go somewhere with good views, but stop at a Cuban restaurant first
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Shoreline+Scenic+Lookout%2C+South+Adobe+Creek+Loop+Trailhead%2C+Adobe+Creek+Loop+Trail%2C+Palo+Alto%2C+CA+94303%2C+USA&waypoints=La+Bodeguita+del+Medio%2C+463+California+Ave%2C+Palo+Alto%2C+CA+94306%2C+USA&mode=driving
+Take me to that museum everyone talks about, with a stop for gas
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Computer+History+Museum%2C+1401+N+Shoreline+Blvd%2C+Mountain+View%2C+CA+94043%2C+USA&waypoints=Shell%2C+1161+Embarcadero+Rd%2C+Palo+Alto%2C+CA+94303%2C+USA&mode=driving
+Navigate to a good spot for sunset photos, stopping at a health food store
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Ravenswood+Open+Space+Preserve%2C+Bay+Rd%2C+East+Palo+Alto%2C+CA+94303%2C+USA&waypoints=Country+Sun+Natural+Foods%2C+440+California+Ave%2C+Palo+Alto%2C+CA+94306%2C+USA&mode=driving
+Route me to the conference center, but I need to find an ATM
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Bechtel+Conference+Center%2C+616+Jane+Stanford+Way%2C+Stanford%2C+CA+94305%2C+USA&waypoints=Bank+of+America+ATM%2C+Tresidder+Memorial+Union%2C+Lagunita+Dr+Rm+214%2C+Stanford%2C+CA+94305%2C+USA&mode=driving
+I want to get to the famous neighborhood, stopping for pizza
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Mission+District%2C+Mission+District%2C+San+Francisco%2C+CA%2C+USA&waypoints=Pizza+Zone+N+Grill%2C+178+Valencia+St+%231116%2C+San+Francisco%2C+CA+94103%2C+USA&mode=driving
+Take me to the tourist area, with a stop at a souvenir shop
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Baylands+Nature+Preserve%2C+Palo+Alto%2C+CA+94303%2C+USA&waypoints=United+Nations+Association+Gift+Shop%2C+552+Emerson+St%2C+Palo+Alto%2C+CA+94301%2C+USA&mode=driving
+Navigate to a good jazz club, stopping for beignets
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Club+Fox%2C+2209+Broadway%2C+Redwood+City%2C+CA+94063%2C+USA&waypoints=Bon+Beignet%2C+779+Story+Rd+%2380%2C+San+Jose%2C+CA+95122%2C+USA&mode=driving
+Get me to the tech district, but I need to find a pharmacy
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Google+Cloud+Space+%7C+Silicon+Valley%2C+1190+Bordeaux+Dr%2C+Sunnyvale%2C+CA+94089%2C+USA&waypoints=Walgreens+Pharmacy%2C+121+E+El+Camino+Real%2C+Mountain+View%2C+CA+94040%2C+USA&mode=driving
+Navigate to Disneyland, but I need to grab something to eat
+https://www.google.com/maps/dir/?api=1&origin=37.42625895112381%2C-122.18137409834223&destination=Disneyland+Park%2C+Anaheim%2C+CA+92802%2C+USA&waypoints=The+Treehouse%2C+459+Lagunita+Dr%2C+Stanford%2C+CA+94305%2C+USA&mode=driving
+Take me to Alcatraz ferry terminal, with a stop at a place to buy tickets first

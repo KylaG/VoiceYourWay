@@ -79,6 +79,9 @@ HARD|Take me to the tourist area, with a stop at a souvenir shop
 HARD|Navigate to a good jazz club, stopping for beignets
 HARD|Get me to the tech district, but I need to find a pharmacy
 HARD|Navigate to Disneyland, but I need to grab something to eat
+HARD|Take me to Alcatraz ferry terminal, with a stop at a place to buy tickets first
+HARD|Navigate me to Santa Monica Pier for a roadtrip, stopping somewhere for tacos along the way
+
 HARD|I want to go from Times Square to Central Park, stopping somewhere for coffee
 HARD|Route me from the Space Needle to Pike Place Market, with a stop at a store
 HARD|Take me from Harvard University to Fenway Park, but I need to pick up a gift first
@@ -86,10 +89,8 @@ HARD|Navigate from Chicago O'Hare to Navy Pier, stopping for a bite to eat
 HARD|Get me from the White House to the Lincoln Memorial, with a stop somewhere nice
 HARD|I need to go from Miami Beach to the Everglades, but stop for supplies first
 HARD|Take me from the Las Vegas Strip to Red Rock Canyon, with a stop for a break
-HARD|Navigate me to Santa Monica Pier for a roadtrip, stopping somewhere for tacos along the way
 HARD|Route me from Denver International Airport to Red Rocks, but I need to find a restroom
 HARD|I want to get from the Statue of Liberty to Brooklyn Bridge, stopping for a quick bite
-HARD|Take me to Alcatraz ferry terminal, with a stop at a place to buy tickets first
 HARD|Navigate from the French Quarter to the Garden District, stopping for refreshments
 HARD|Get me from UT Austin to SXSW headquarters, but I need to find a charging station
 HARD|I want directions from the Gateway Arch to Busch Stadium, stopping somewhere for a drink

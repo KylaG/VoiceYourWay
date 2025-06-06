@@ -44,6 +44,9 @@ async function main() {
     const queriesFile = "./nav-queries.txt";
     const queries = parseQueries(queriesFile);
 
+    // Default user location coordinates for evals
+    const DEFAULT_USER_LOCATION = "37.42625895112381,-122.18137409834223";
+
     const easyOutputFile = "./eval-results/nav-easy.txt";
     const mediumOutputFile = "./eval-results/nav-medium.txt";
     const hardOutputFile = "./eval-results/nav-hard.txt";
@@ -91,7 +94,7 @@ async function main() {
         console.log(`Working on HARD query ${i}:`, queries.hard[i]);
         writeFileSync(hardOutputFile, queries.hard[i] + "\n", { flag: "a" });
         try {
-            const url = await sendToClaude(queries.hard[i]);
+            const url = await sendToClaude(queries.hard[i], DEFAULT_USER_LOCATION);
             console.log("Result:", url);
             writeFileSync(hardOutputFile, url + "\n", { flag: "a" });
         } catch (error) {
