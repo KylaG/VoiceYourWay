@@ -1,0 +1,104 @@
+# Navigation System Test Queries
+# Format: DIFFICULTY_LEVEL|QUERY_TEXT
+
+# EASY QUERIES (30 total)
+# 15 with explicit origin, 15 without origin
+
+EASY|I'm starting at Stanford University. Find me an optimal route to visit the Golden Gate Bridge and Half Moon Bay
+EASY|From Palo Alto City Hall, plan the best route to Fisherman's Wharf and Sausalito
+EASY|Starting from San Jose Airport, get me an optimal path to visit Alcatraz Island and Union Square
+EASY|I'm at Facebook headquarters in Menlo Park. Route me optimally to the Palace of Fine Arts and Lombard Street
+EASY|From Mountain View Caltrain Station, find the best route to Ghirardelli Square and Crissy Field
+EASY|Beginning at Stanford Shopping Center, plan an optimal route to Pier 39 and the Painted Ladies
+EASY|I'm starting from Google headquarters in Mountain View. Find me the best route to visit Chinatown and North Beach
+EASY|From San Francisco Airport, create an optimal route to the Castro District and Mission Dolores
+EASY|Starting at UC Berkeley, plan the best path to Lombard Street and Telegraph Hill
+EASY|I'm at Oracle Park in San Francisco. Find an optimal route to Golden Gate Park and the Presidio
+EASY|From Redwood City Courthouse, get me the best route to visit Nob Hill and Russian Hill
+EASY|Beginning at Stanford Memorial Church, plan an optimal route to Treasure Island and the Embarcadero
+EASY|I'm starting from Menlo Park Library. Find the best route to visit Fort Point and Baker Beach
+EASY|From San Mateo Bridge, create an optimal path to Haight-Ashbury and the Marina District
+EASY|Starting at Palo Alto High School, find the best route to visit Coit Tower and Washington Square Park
+EASY|Find me an optimal route to visit the Golden Gate Bridge and Berkeley Marina
+EASY|Plan the best route to Muir Woods and Tiburon
+EASY|Get me an optimal path to visit Stanford Stadium and Great America
+EASY|Route me optimally to Santana Row and Valley Fair Mall
+EASY|Find the best route to Half Moon Bay and Pacifica Pier
+EASY|Create an optimal route to visit Napa Valley and Sonoma Plaza
+EASY|Plan the best path to UC Santa Cruz and Capitola Beach
+EASY|Get me an optimal route to visit Gilroy Gardens and Casa de Fruta
+EASY|Find the best route to San Gregorio Beach and Año Nuevo State Park
+EASY|Route me optimally to Livermore Premium Outlets and Blackhawk Plaza
+EASY|Plan an optimal path to visit Fremont Central Park and Ardenwood Historic Farm
+EASY|Find the best route to Hayward Japanese Gardens and Castro Valley Marketplace
+EASY|Create an optimal route to visit Milpitas Great Mall and Newpark Mall
+EASY|Get me the best path to San Francisco Zoo and Ocean Beach
+EASY|Plan an optimal route to visit Daly City Serramonte Center and Colma BART Station
+
+# MEDIUM QUERIES (30 total)
+# 15 with explicit origin, 15 without origin
+
+MEDIUM|I'm starting at Stanford University. Find me an optimal route to visit a coffee shop and Whole Foods
+MEDIUM|From Palo Alto Train Station, plan the best route to a gas station and Target
+MEDIUM|Starting from Google headquarters, get me an optimal path to visit a pharmacy and In-N-Out Burger
+MEDIUM|I'm at San Francisco City Hall. Route me optimally to a bookstore and the nearest Starbucks
+MEDIUM|From UC Berkeley campus, find the best route to a Mexican restaurant and CVS
+MEDIUM|Beginning at Oracle headquarters in Redwood City, plan an optimal route to a sushi restaurant and Best Buy
+MEDIUM|I'm starting from Menlo Park Caltrain. Find me the best route to visit a dry cleaner and Trader Joe's
+MEDIUM|From San Jose State University, create an optimal route to a pizza place and Walgreens
+MEDIUM|Starting at Facebook headquarters, plan the best path to a nail salon and Safeway
+MEDIUM|I'm at Palo Alto City Hall. Find an optimal route to a dental office and Home Depot
+MEDIUM|From Stanford Shopping Center, get me the best route to visit a bank and Costco
+MEDIUM|Beginning at Mountain View Library, plan an optimal route to a hair salon and Walmart
+MEDIUM|I'm starting from Redwood City downtown. Find the best route to visit an auto repair shop and Nordstrom
+MEDIUM|From Campbell Community Center, create an optimal path to a veterinarian and Macy's
+MEDIUM|Starting at Los Altos Hills, find the best route to visit a bakery and REI
+MEDIUM|Find me an optimal route to visit a coffee shop and a grocery store
+MEDIUM|Plan the best route to a gas station and a pharmacy
+MEDIUM|Get me an optimal path to visit a restaurant and a bookstore
+MEDIUM|Route me optimally to a bank and a hardware store
+MEDIUM|Find the best route to a gym and a dry cleaner
+MEDIUM|Create an optimal route to visit a nail salon and a pet store
+MEDIUM|Plan the best path to a dentist and a shopping mall
+MEDIUM|Get me an optimal route to visit a library and a Mexican restaurant
+MEDIUM|Find the best route to a Starbucks and a Target
+MEDIUM|Route me optimally to a sushi place and a CVS
+MEDIUM|Plan an optimal path to visit a bakery and a Best Buy
+MEDIUM|Find the best route to a hair salon and a Whole Foods
+MEDIUM|Create an optimal route to visit a pizza place and a Walgreens
+MEDIUM|Get me the best path to an auto shop and a Trader Joe's
+MEDIUM|Plan an optimal route to visit a veterinarian and a Costco
+
+# HARD QUERIES (30 total)
+# 15 with explicit origin, 15 without origin
+
+HARD|I'm starting at Stanford University. Find me an optimal route to visit a grocery store, a coffee shop, and the Target in Mountain View
+HARD|From Palo Alto City Hall, plan the best route to Walgreens, a sushi restaurant, and Stanford Shopping Center
+HARD|Starting from Google headquarters, get me an optimal path to visit CVS, In-N-Out Burger, and a bookstore
+HARD|I'm at San Francisco Airport. Route me optimally to a gas station, Whole Foods, and the Apple Store in Union Square
+HARD|From UC Berkeley, find the best route to a Mexican restaurant, Best Buy, and the Starbucks on Telegraph Avenue
+HARD|Beginning at Oracle Park, plan an optimal route to a pharmacy, Trader Joe's, and Lombard Street
+HARD|I'm starting from Menlo Park Library. Find me the best route to visit a dry cleaner, Safeway, and Facebook headquarters
+HARD|From San Jose Airport, create an optimal route to a pizza place, Home Depot, and Santana Row
+HARD|Starting at Facebook headquarters, plan the best path to a nail salon, Costco, and Half Moon Bay
+HARD|I'm at Mountain View Caltrain. Find an optimal route to a dental office, REI, and the Computer History Museum
+HARD|From Stanford Memorial Church, get me the best route to visit a bank, Nordstrom, and Golden Gate Park
+HARD|Beginning at Redwood City Courthouse, plan an optimal route to a hair salon, Walmart, and Fisherman's Wharf
+HARD|I'm starting from Palo Alto High School. Find the best route to visit an auto repair shop, Macy's, and Alcatraz Island
+HARD|From Campbell Community Center, create an optimal path to a veterinarian, a bakery, and Great America
+HARD|Starting at Los Altos Main Street, find the best route to visit a gym, a pet store, and Stanford Stadium
+HARD|Find me an optimal route to visit a coffee shop, a grocery store, and a gas station
+HARD|Plan the best route to a pharmacy, a restaurant, and a bookstore
+HARD|Get me an optimal path to visit a bank, a hardware store, and a shopping mall
+HARD|Route me optimally to a gym, a dry cleaner, and a nail salon
+HARD|Find the best route to a Starbucks, a Target, and a dentist
+HARD|Create an optimal route to visit a sushi place, a CVS, and a pet store
+HARD|Plan the best path to a bakery, a Best Buy, and a library
+HARD|Get me an optimal route to visit a hair salon, a Whole Foods, and a Mexican restaurant
+HARD|Find the best route to a pizza place, a Walgreens, and an auto shop
+HARD|Route me optimally to a veterinarian, a Trader Joe's, and a Costco
+HARD|Plan an optimal path to visit a dental office, a Nordstrom, and a Starbucks
+HARD|Find the best route to a bank, a Home Depot, and a sushi restaurant
+HARD|Create an optimal route to visit a gym, a Safeway, and a bookstore
+HARD|Get me the best path to a nail salon, a REI, and a pizza place
+HARD|Plan an optimal route to visit a dry cleaner, a Macy's, and a coffee shop
